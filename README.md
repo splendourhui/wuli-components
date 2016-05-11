@@ -7,9 +7,9 @@
 
 
 
-## cvte-exam-admin
+## wuli-components
 
-> 网测系统管理端
+> 基于 [ant-design](http://ant.design/) 封装的组件库
 
 ### 用法
 

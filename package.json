@@ -1,6 +1,6 @@
 {
-  "name": "cvte-exam-admin",
-  "version": "0.0.1",
+  "name": "wuli-components",
+  "version": "0.0.2",
   "dependencies": {
     "antd": "1.0.0",
     "co": "^4.6.0",
