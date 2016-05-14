@@ -1,8 +1,8 @@
 /**
  * @Author: SamChan
  * @Date:   2016-05-05T11:30:25+08:00
-* @Last modified by:   SamChan
-* @Last modified time: 2016-05-05T11:30:45+08:00
+* @Last modified by:   SplendourHui
+* @Last modified time: 2016-05-13 10:47
  */
 
 
@@ -28,4 +28,17 @@ exports.hideSuccessMessage = () => ({
 
 exports.hideErrorMessage = () => ({
   type: HIDE_ERROR_MESSAGE
+});
+
+export const SHOW_TOAST = 'SHOW_TOAST';
+exports.showToast = (msgType, msg, hold) => ({
+  type: SHOW_TOAST,
+  msgType,
+  msg,
+  hold
+});
+
+export const HIDE_TOAST = 'HIDE_TOAST';
+exports.hideToast = () => ({
+  type: HIDE_TOAST
 });

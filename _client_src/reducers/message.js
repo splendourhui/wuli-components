@@ -1,8 +1,8 @@
 /**
  * @Author: SamChan
  * @Date:   2016-05-05T15:19:40+08:00
-* @Last modified by:   SamChan
-* @Last modified time: 2016-05-05T15:21:07+08:00
+* @Last modified by:   SplendourHui
+* @Last modified time: 2016-05-13 10:54
  */
 
 
@@ -59,11 +59,37 @@ function showErrMsg(state = false, action) {
   }
 }
 
+function toast(state = {
+  show: false,
+  msgType: 'info',
+  msg: '',
+  hold: 1
+}, action) {
+  if (action.type === messageActions.SHOW_TOAST) {
+    return {
+      show: true,
+      msgType: action.msgType,
+      msg: action.msg,
+      hold: action.hold
+    };
+  } else if (action.type === messageActions.HIDE_TOAST) {
+    return {
+      show: false,
+      msgType: 'info',
+      msg: '',
+      hold: 1
+    };
+  } else {
+    return state;
+  }
+}
+
 const messagesReducer = combineReducers({
   errorMessage,
   successMessage,
   showSucMsg,
-  showErrMsg
+  showErrMsg,
+  toast
 });
 
 export default messagesReducer;

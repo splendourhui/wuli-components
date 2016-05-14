@@ -2,7 +2,7 @@
 * @Author: SamChan
 * @Date:   2016-05-05T15:02:42+08:00
 * @Last modified by:   SplendourHui
-* @Last modified time: 2016-05-12 20:11
+* @Last modified time: 2016-05-13 11:39
 */
 
 import React, {Component, PropTypes} from 'react';
@@ -17,14 +17,24 @@ import * as dialogActions from '../../actions/common_dialog';
 import WULISider from '../../components/WULISider';
 import WULIHeader from '../../components/WULIHeader';
 import WULIConfirmDialog from '../../components/WULIConfirmDialog';
+import WULIGlobalLoading from '../../components/WULIGlobalLoading';
+import WULIToast from '../../components/WULIToast';
 
 import Row from 'antd/lib/row';
 import Col from 'antd/lib/col';
 import Button from 'antd/lib/button';
+import Spin from 'antd/lib/spin';
 
 class ExamplePage extends Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    this.props.commonActions.showLoading('正在加载，请稍候...');
+    setTimeout(() => {
+      this.props.messageActions.showToast('success', '成功提示');
+    }, 3000);
   }
 
   handleSelect(key) {
@@ -95,8 +105,12 @@ class ExamplePage extends Component {
                 />
             </Col>
             <Col className="main-container" span={20}>
-              <h1>主窗口</h1>
-              <Button onClick={this.showModal.bind(this)}>确认框</Button>
+              <Spin spinning={true}>
+                <h1>主窗口</h1>
+              </Spin>
+              <div>
+                <Button onClick={this.showModal.bind(this)}>确认框</Button>
+              </div>
             </Col>
           </Row>
         </div>
@@ -107,20 +121,33 @@ class ExamplePage extends Component {
           handleOK={this.props.dialog.confirmDialog.confirmAction}
           handleCancel={this.props.dialogActions.closeConfirmDialog}
           />
+        <WULIGlobalLoading show={this.props.loading.show}
+          content={this.props.loading.msg} />
+        <WULIToast show={this.props.message.toast.show}
+          type={this.props.message.toast.msgType}
+          hold={this.props.message.toast.hold}
+          hideToast={this.props.messageActions.hideToast}
+          content={this.props.message.toast.msg} />
       </div>
     );
   }
 }
 
 ExamplePage.propTypes = {
+  loading: PropTypes.object,
   dialog: PropTypes.object,
+  message: PropTypes.object,
+  commonActions: PropTypes.object,
+  messageActions: PropTypes.object,
   dialogActions: PropTypes.object
 };
 
 function mapStateToProps(state) {
   return {
     query: state.router.location.query,
-    dialog: state.dialog
+    loading: state.loading,
+    dialog: state.dialog,
+    message: state.message
   };
 }
 

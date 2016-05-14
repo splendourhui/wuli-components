@@ -1,8 +1,8 @@
 /**
 * @Author: SamChan
 * @Date:   2016-05-05T11:32:09+08:00
-* @Last modified by:   SamChan
-* @Last modified time: 2016-05-05T14:59:09+08:00
+* @Last modified by:   SplendourHui
+* @Last modified time: 2016-05-13 10:13
 */
 
 import React, {Component, PropTypes} from 'react';
@@ -33,7 +33,7 @@ App.propTypes = {
   children: PropTypes.element,
   query: PropTypes.object,
   params: PropTypes.object.isRequired,
-  loading: PropTypes.bool.isRequired,
+  loading: PropTypes.object.isRequired,
   message: PropTypes.object.isRequired,
   dialog: PropTypes.object.isRequired,
   commonActions: PropTypes.object.isRequired,
