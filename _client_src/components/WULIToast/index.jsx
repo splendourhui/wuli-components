@@ -2,7 +2,7 @@
 * @Author: SplendourHui
 * @Date:   2016-05-13 10:46
 * @Last modified by:   SplendourHui
-* @Last modified time: 2016-05-13 11:40
+* @Last modified time: 2016-05-14 11:36
 */
 
 
@@ -17,7 +17,7 @@ class WULIToast extends Component {
     super(props);
   }
   componentDidUpdate(prevProps, prevState) {
-    if (this.props.show) {
+    if (this.props.show && prevProps.toastKey !== this.props.toastKey) {
       const method = message[this.props.type];
       const hold = this.props.hold || 3;
       this.hide = method(this.props.content || 'toast', this.props.hold || 3);
@@ -39,6 +39,7 @@ WULIToast.propTypes = {
   show: PropTypes.bool.isRequired,
   type: PropTypes.string.isRequired,
   hideToast: PropTypes.func.isRequired,
+  toastKey: PropTypes.any.isRequired,
   hold: PropTypes.number,
   content: PropTypes.string
 };

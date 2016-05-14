@@ -2,7 +2,7 @@
 * @Author: SamChan
 * @Date:   2016-05-05T15:02:42+08:00
 * @Last modified by:   SplendourHui
-* @Last modified time: 2016-05-13 11:39
+* @Last modified time: 2016-05-14 11:39
 */
 
 import React, {Component, PropTypes} from 'react';
@@ -19,6 +19,7 @@ import WULIHeader from '../../components/WULIHeader';
 import WULIConfirmDialog from '../../components/WULIConfirmDialog';
 import WULIGlobalLoading from '../../components/WULIGlobalLoading';
 import WULIToast from '../../components/WULIToast';
+import WULINotification from '../../components/WULINotification';
 
 import Row from 'antd/lib/row';
 import Col from 'antd/lib/col';
@@ -33,8 +34,11 @@ class ExamplePage extends Component {
   componentDidMount() {
     this.props.commonActions.showLoading('正在加载，请稍候...');
     setTimeout(() => {
-      this.props.messageActions.showToast('success', '成功提示');
+      this.props.messageActions.showToast('success', '成功提示', new Date().getTime());
     }, 3000);
+
+    this.props.messageActions.showNotification('error',
+      '错误提示', '这是错误提示', new Date().getTime());
   }
 
   handleSelect(key) {
@@ -127,7 +131,15 @@ class ExamplePage extends Component {
           type={this.props.message.toast.msgType}
           hold={this.props.message.toast.hold}
           hideToast={this.props.messageActions.hideToast}
+          toastKey={this.props.message.toast.key}
           content={this.props.message.toast.msg} />
+        <WULINotification show={this.props.message.notification.show}
+          type={this.props.message.notification.msgType}
+          hold={this.props.message.notification.hold}
+          hideNotification={this.props.messageActions.hideNotification}
+          notificationKey={this.props.message.notification.key}
+          title={this.props.message.notification.title}
+          content={this.props.message.notification.content} />
       </div>
     );
   }

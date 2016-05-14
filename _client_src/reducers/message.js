@@ -2,7 +2,7 @@
  * @Author: SamChan
  * @Date:   2016-05-05T15:19:40+08:00
 * @Last modified by:   SplendourHui
-* @Last modified time: 2016-05-13 10:54
+* @Last modified time: 2016-05-14 11:35
  */
 
 
@@ -63,6 +63,7 @@ function toast(state = {
   show: false,
   msgType: 'info',
   msg: '',
+  key: '',
   hold: 1
 }, action) {
   if (action.type === messageActions.SHOW_TOAST) {
@@ -70,6 +71,7 @@ function toast(state = {
       show: true,
       msgType: action.msgType,
       msg: action.msg,
+      key: action.key,
       hold: action.hold
     };
   } else if (action.type === messageActions.HIDE_TOAST) {
@@ -77,6 +79,38 @@ function toast(state = {
       show: false,
       msgType: 'info',
       msg: '',
+      key: '',
+      hold: 1
+    };
+  } else {
+    return state;
+  }
+}
+
+function notification(state = {
+  show: false,
+  msgType: 'info',
+  title: '',
+  content: '',
+  key: '',
+  hold: 1
+}, action) {
+  if (action.type === messageActions.SHOW_NOTIFICATION) {
+    return {
+      show: true,
+      msgType: action.msgType,
+      title: action.title,
+      content: action.content,
+      key: action.key,
+      hold: action.hold
+    };
+  } else if (action.type === messageActions.HIDE_NOTIFICATION) {
+    return {
+      show: false,
+      msgType: 'info',
+      title: '',
+      content: '',
+      key: '',
       hold: 1
     };
   } else {
@@ -89,7 +123,8 @@ const messagesReducer = combineReducers({
   successMessage,
   showSucMsg,
   showErrMsg,
-  toast
+  toast,
+  notification
 });
 
 export default messagesReducer;

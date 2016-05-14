@@ -2,7 +2,7 @@
  * @Author: SamChan
  * @Date:   2016-05-05T11:30:25+08:00
 * @Last modified by:   SplendourHui
-* @Last modified time: 2016-05-13 10:47
+* @Last modified time: 2016-05-14 11:34
  */
 
 
@@ -31,14 +31,30 @@ exports.hideErrorMessage = () => ({
 });
 
 export const SHOW_TOAST = 'SHOW_TOAST';
-exports.showToast = (msgType, msg, hold) => ({
+exports.showToast = (msgType, msg, key, hold) => ({
   type: SHOW_TOAST,
   msgType,
   msg,
+  key,
   hold
 });
 
 export const HIDE_TOAST = 'HIDE_TOAST';
 exports.hideToast = () => ({
   type: HIDE_TOAST
+});
+
+export const SHOW_NOTIFICATION = 'SHOW_NOTIFICATION';
+exports.showNotification = (msgType, title, content, key, hold) => ({
+  type: SHOW_NOTIFICATION,
+  msgType,
+  title,
+  content,
+  key,
+  hold
+});
+
+export const HIDE_NOTIFICATION = 'HIDE_NOTIFICATION';
+exports.hideNotification = () => ({
+  type: HIDE_NOTIFICATION
 });

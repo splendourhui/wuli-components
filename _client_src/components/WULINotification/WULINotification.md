@@ -1,15 +1,15 @@
 <!--
 @Author: SplendourHui
-@Date:   2016-05-13 11:10
+@Date:   2016-05-14 14:41
 @Last modified by:   SplendourHui
-@Last modified time: 2016-05-14 14:46
+@Last modified time: 2016-05-14 14:45
 -->
 
 
 
-## WULIToast
+## WULINotification
 
-> 全局 toast
+> 通知组件
 
 ### props
 
@@ -33,14 +33,14 @@
     'success'
   ```
 
-- hideToast
-  - 说明：隐藏 toast 的方法，一般是设置 state 的方法
+- hideNotification
+  - 说明：隐藏 notification 的方法，一般是设置 state 的方法
   - 类型：Function
   - 必须：是
   - 默认值：
   - 样例：
   ```
-    this.props.messageActions.hideToast
+    this.props.messageActions.hideNotification
   ```
 
 - hold
@@ -53,6 +53,16 @@
     3
   ```
 
+- title
+  - 说明：内容
+  - 类型：String
+  - 必须：否
+  - 默认值：''
+  - 样例：
+  ```
+    '通知标题'
+  ```
+
 - content
   - 说明：内容
   - 类型：String
@@ -63,12 +73,22 @@
     '成功提示'
   ```
 
-- toastKey
-  - 说明：当前 toast 的唯一标识
+- notificationKey
+  - 说明：当前通知的唯一标识
   - 类型：String
   - 必须：是
   - 默认值：
   - 样例：
   ```
     'wubianluomoxiaoxiaoxia'
+  ```
+
+- onClose
+  - 说明：当关闭通知时的回调
+  - 类型：String
+  - 必须：否
+  - 默认值：
+  - 样例：
+  ```
+    () => console.log('Click close.');
   ```
