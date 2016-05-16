@@ -2,7 +2,7 @@
 * @Author: SamChan
 * @Date:   2016-05-05T15:02:42+08:00
 * @Last modified by:   SplendourHui
-* @Last modified time: 2016-05-14 11:39
+* @Last modified time: 2016-05-16 14:55
 */
 
 import React, {Component, PropTypes} from 'react';
@@ -92,11 +92,20 @@ class ExamplePage extends Component {
       }
     ];
 
+    const onClick = ({key}) => console.log(`点击了菜单${key}`);
+
     return (
       <div className="example-page">
         <WULIHeader title="WULI Design"
           logoHref="#"
-          user={{name: '郑南辉'}}
+          user={{
+            name: '郑南辉',
+            actions: [
+              {key: 'settings', title: '设置'},
+              {key: 'logout', title: '退出登陆'}
+            ],
+            onClick
+          }}
           />
         <div className="main-wrapper">
           <Row>
