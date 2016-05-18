@@ -2,7 +2,7 @@
 @Author: SplendourHui
 @Date:   2016-05-14 14:41
 @Last modified by:   SplendourHui
-@Last modified time: 2016-05-14 14:45
+@Last modified time: 2016-05-16 15:13
 -->
 
 
@@ -54,7 +54,7 @@
   ```
 
 - title
-  - 说明：内容
+  - 说明：标题
   - 类型：String
   - 必须：否
   - 默认值：''

@@ -2,10 +2,8 @@
 * @Author: SplendourHui
 * @Date:   2016-05-10 17:00
 * @Last modified by:   SplendourHui
-* @Last modified time: 2016-05-13 09:22
+* @Last modified time: 2016-05-18 15:44
 */
-
-
 
 import React, {Component, PropTypes} from 'react';
 
@@ -16,24 +14,15 @@ const SubMenu = Menu.SubMenu;
 class WULISlider extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      current: this.props.selectedKey,
-      openKeys: this.props.openKeys || []
-    };
   }
 
   handleClick(e) {
-    this.setState({
-      current: e.key,
-      openKeys: e.keyPath.slice(1)
-    });
+    this.props.setSelectedKey(e.key);
     this.props.handleSelect(e.key);
   }
 
   onToggle(info) {
-    this.setState({
-      openKeys: info.open ? info.keyPath : info.keyPath.slice(1)
-    });
+    this.props.setOpenKeys(info.open ? info.keyPath : info.keyPath.slice(1));
   }
 
   render() {
@@ -68,8 +57,8 @@ class WULISlider extends Component {
       <div className="wuli-slider">
         <Menu onClick={this.handleClick}
           style={this.props.style}
-          openKeys={this.state.openKeys}
-          selectedKeys={[this.state.current]}
+          openKeys={this.props.openKeys}
+          selectedKeys={[this.props.selectedKey]}
           onOpen={this.onToggle}
           onClose={this.onToggle}
           mode="inline">
@@ -85,6 +74,8 @@ WULISlider.propTypes = {
   openKeys: PropTypes.array,
   selectedKey: PropTypes.string,
   handleSelect: PropTypes.func.isRequired,
+  setOpenKeys: PropTypes.func.isRequired,
+  setSelectedKey: PropTypes.func.isRequired,
   style: PropTypes.object
 };
 
