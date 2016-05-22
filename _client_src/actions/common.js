@@ -1,8 +1,8 @@
 /**
  * @Author: SamChan
  * @Date:   2016-05-05T11:26:54+08:00
-* @Last modified by:   SamChan
-* @Last modified time: 2016-05-05T17:50:20+08:00
+* @Last modified by:   SplendourHui
+* @Last modified time: 2016-05-22 23:42
  */
 
 
@@ -25,3 +25,15 @@ exports.hideLoading = () => ({
 
 exports.jumpTo = (path, name) =>
   (dispatch, getState) => dispatch(pushState(null, path));
+
+export const SET_SIDEBAR_OPEN_KEYS = 'SET_SIDEBAR_OPEN_KEYS';
+exports.setSidebarOpenKeys = data => ({
+  type: SET_SIDEBAR_OPEN_KEYS,
+  data
+});
+
+export const SET_SIDEBAR_SELECTED_KEY = 'SET_SIDEBAR_SELECTED_KEY';
+exports.setSidebarSelectedKey = data => ({
+  type: SET_SIDEBAR_SELECTED_KEY,
+  data
+});

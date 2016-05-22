@@ -2,7 +2,7 @@
  * @Author: SamChan
  * @Date:   2016-05-05T15:15:58+08:00
 * @Last modified by:   SplendourHui
-* @Last modified time: 2016-05-13 11:00
+* @Last modified time: 2016-05-22 23:43
  */
 
 
@@ -45,10 +45,30 @@ function loading(state = {
   }
 }
 
+function sidebarOpenKeys(state = [], action) {
+  switch (action.type) {
+    case commonActions.SET_SIDEBAR_OPEN_KEYS:
+      return Object.assign([], action.data);
+    default:
+      return state;
+  }
+}
+
+function sidebarSelectedKey(state = '', action) {
+  switch (action.type) {
+    case commonActions.SET_SIDEBAR_SELECTED_KEY:
+      return action.data;
+    default:
+      return state;
+  }
+}
+
 const rootReducer = combineReducers({
   loading,
   dialog,
   message,
+  sidebarOpenKeys,
+  sidebarSelectedKey,
   router
 });
 

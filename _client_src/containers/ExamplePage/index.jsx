@@ -2,7 +2,7 @@
 * @Author: SamChan
 * @Date:   2016-05-05T15:02:42+08:00
 * @Last modified by:   SplendourHui
-* @Last modified time: 2016-05-16 14:55
+* @Last modified time: 2016-05-22 23:46
 */
 
 import React, {Component, PropTypes} from 'react';
@@ -32,6 +32,8 @@ class ExamplePage extends Component {
   }
 
   componentDidMount() {
+    this.props.commonActions.setSidebarOpenKeys(['sub1', '2']);
+    this.props.commonActions.setSidebarSelectedKey('3');
     this.props.commonActions.showLoading('正在加载，请稍候...');
     setTimeout(() => {
       this.props.messageActions.showToast('success', '成功提示', new Date().getTime());
@@ -112,10 +114,11 @@ class ExamplePage extends Component {
             <Col span={4}>
               <WULISider
                 menus={getMenus()}
-                openKeys={['sub1', '2']}
-                selectedKey={`3`}
+                openKeys={this.props.sidebarOpenKeys}
+                selectedKey={this.props.sidebarSelectedKey}
                 handleSelect={this.handleSelect.bind(this)}
-                />
+                setOpenKeys={this.props.commonActions.setSidebarOpenKeys}
+                setSelectedKey={this.props.commonActions.setSidebarSelectedKey}/>
             </Col>
             <Col className="main-container" span={20}>
               <Spin spinning={true}>
@@ -156,6 +159,8 @@ class ExamplePage extends Component {
 
 ExamplePage.propTypes = {
   loading: PropTypes.object,
+  sidebarOpenKeys: PropTypes.array,
+  sidebarSelectedKey: PropTypes.string,
   dialog: PropTypes.object,
   message: PropTypes.object,
   commonActions: PropTypes.object,
@@ -167,6 +172,8 @@ function mapStateToProps(state) {
   return {
     query: state.router.location.query,
     loading: state.loading,
+    sidebarOpenKeys: state.sidebarOpenKeys,
+    sidebarSelectedKey: state.sidebarSelectedKey,
     dialog: state.dialog,
     message: state.message
   };
