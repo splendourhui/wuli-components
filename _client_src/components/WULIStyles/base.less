@@ -1,0 +1,33 @@
+/**
+* @Author: SplendourHui
+* @Date:   2016-05-31 15:27
+* @Last modified by:   SplendourHui
+* @Last modified time: 2016-05-31 15:28
+*/
+
+@import './common.less';
+
+html {
+  body {
+    button.color-danger {
+      background-color: @dangerColor;
+      border-color: @dangerColor;
+      color: @whiteColor;
+      &:hover {
+        background-color: @dangerColorLighten;
+        border-color: @dangerColorLighten;
+        color: @whiteColor;
+      }
+    }
+    button.color-success {
+      background-color: @successColor;
+      border-color: @successColor;
+      color: @whiteColor;
+      &:hover {
+        background-color: @successColorLighten;
+        border-color: @successColorLighten;
+        color: @whiteColor;
+      }
+    }
+  }
+}
