@@ -1,43 +1,43 @@
 /**
 * @Author: SplendourHui
-* @Date:   2016-05-12 14:30
+* @Date:   2016-05-13 09:39
 * @Last modified by:   SplendourHui
-* @Last modified time: 2016-05-12 15:10
+* @Last modified time: 2016-10-14 19:06
 */
 
-
-
 import React, {Component, PropTypes} from 'react';
+import classNames from 'classnames';
 import './style.less';
 
-import Modal from 'antd/lib/modal';
+import {Modal} from 'antd';
 
-class WULIConfirmDialog extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    return (
-      <Modal className="wuli-confirm-dialog"
-        visible={this.props.show}
-        title={this.props.title}
-        onOk={this.props.handleOK}
-        confirmLoading={this.props.confirmLoading}
-        onCancel={this.props.handleCancel}
-        >
-        <p>{this.props.content}</p>
-      </Modal>
-    );
-  }
-}
+const WULIConfirmDialog = ({className, show, title, content, confirmLoading,
+  handleOK, handleCancel}) => {
+  const cls = classNames({
+    'wuli-confirm-dialog': true
+  }, className);
+
+  return (
+    <Modal className={cls}
+      visible={show}
+      title={title}
+      onOk={handleOK}
+      confirmLoading={confirmLoading}
+      onCancel={handleCancel}
+      >
+      <p>{content}</p>
+    </Modal>
+  );
+};
 
 WULIConfirmDialog.propTypes = {
+  className: PropTypes.string,
   show: PropTypes.bool.isRequired,
   title: PropTypes.string.isRequired,
-  handleOK: PropTypes.func,
-  handleCancel: PropTypes.func,
+  content: PropTypes.string,
   confirmLoading: PropTypes.bool,
-  content: PropTypes.string
+  handleOK: PropTypes.func,
+  handleCancel: PropTypes.func
 };
 
 export default WULIConfirmDialog;

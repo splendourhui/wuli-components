@@ -2,30 +2,21 @@
 * @Author: SplendourHui
 * @Date:   2016-06-12 09:36
 * @Last modified by:   SplendourHui
-* @Last modified time: 2016-10-11 09:59
+* @Last modified time: 2016-09-29 10:01
 */
 
 const path = require('path');
 const webpack = require('webpack');
+const Dashboard = require('webpack-dashboard');
+const DashboardPlugin = require('webpack-dashboard/plugin');
+const dashboard = new Dashboard();
 const merge = require('lodash/object/merge');
 const autoprefixer = require('autoprefixer');
 
 const commonConfig = {
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      output: {
-        comments: false
-      },
-      compress: {
-        warnings: false
-      }
-    }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
-      }
-    })
+    new DashboardPlugin(dashboard.setData)
   ],
   resolve: {
     alias: {

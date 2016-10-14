@@ -1,7 +1,7 @@
 # @Author: SplendourHui
 # @Date:   2016-05-03 10:03
-# @Last modified by:   SamChan
-# @Last modified time: 2016-05-05T17:56:00+08:00
+# @Last modified by:   SplendourHui
+# @Last modified time: 2016-10-14 18:53
 
 
 
@@ -100,7 +100,8 @@
     "react/sort-comp": 1,
     "react/wrap-multilines": 1,
     "import/no-named-as-default": 0,
-    "import/no-unresolved": 0
+    "import/no-unresolved": 0,
+    "import/named": 0
   },
   "globals": {
   }
